@@ -14,9 +14,12 @@ namespace jobsapi.Controllers
     {
         private readonly JobsService _jservice;
 
-        public JobsController(JobsService jservice)
+        private readonly ContractorsService _cservice;
+
+        public JobsController(JobsService jservice, ContractorsService cservice)
         {
             _jservice = jservice;
+            _cservice = cservice;
         }
 
         [HttpGet]
@@ -89,9 +92,24 @@ namespace jobsapi.Controllers
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 return Ok(_jservice.DeleteOne(id));
             }
-            catch (System.Exception err) 
+            catch (System.Exception err)
             {
-                return BadRequest(err.Message);                
+                return BadRequest(err.Message);
+            }
+        }
+
+        [HttpGet("{id}/contractors")]
+        [Authorize]
+        public ActionResult<IEnumerable<JobContractorViewModel>> GetContractorsByJobId(int id)
+        {
+            try
+            {
+                return Ok(_cservice.GetContractorsByJobId(id));
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
             }
         }
     }

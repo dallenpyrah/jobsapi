@@ -67,5 +67,10 @@ namespace jobsapi.Services
                 return "Deleted";
             }
         }
+
+        internal IEnumerable<JobContractorViewModel> GetContractorsByJobId(int id)
+        {
+            return _crepo.GetContractorsByJobId(id);
+        }
     }
 }

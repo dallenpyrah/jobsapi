@@ -15,4 +15,9 @@ namespace jobsapi.Models
 
 
     }
+
+    public class JobContractorViewModel : Contractor
+    {
+        public int JobContractorId { get; set; }
+    }
 }

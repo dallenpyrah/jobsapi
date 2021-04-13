@@ -76,5 +76,16 @@ namespace jobsapi.Repositorys
             _db.Execute(sql, new { id });
             return;
         }
+
+        internal IEnumerable<JobContractorViewModel> GetContractorsByJobId(int id)
+        {
+            string sql = @"SELECT
+            c.*,
+            jc.id as JobContractorId
+            FROM jobcontractors jc
+            JOIN contractors c ON jc.contractorId = c.id
+            WHERE jobId = @id;";
+            return _db.Query<JobContractorViewModel>(sql, new { id });
+        }
     }
 }
