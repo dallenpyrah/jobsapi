@@ -7,7 +7,7 @@ namespace jobsapi.Models
 
         public string Location  { get; set; }
 
-        public int Budget { get; set; }
+        public int? Budget { get; set; }
 
         public string CreatorId { get; set; }
 
