@@ -55,6 +55,8 @@ namespace jobsapi
             services.AddTransient<ProfilesService>();
             services.AddTransient<ContractorsRepository>();
             services.AddTransient<ContractorsService>();
+            services.AddTransient<JobContractorsRepository>();
+            services.AddTransient<JobContractorsService>();
         }
         private IDbConnection CreateDbConnection()
         {

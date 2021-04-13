@@ -40,3 +40,26 @@ USE jobsapi;
 --     REFERENCES profiles (id)
 --     ON DELETE CASCADE
 -- )
+
+
+CREATE TABLE jobcontractors 
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    jobId INT NOT NULL,
+    contractorId INT NOT NULL,
+    creatorId VARCHAR(255),
+
+    PRIMARY KEY (id),
+
+    FOREIGN KEY (creatorId)
+    REFERENCES profiles (id)
+    ON DELETE CASCADE,
+
+    FOREIGN KEY (jobId)
+    REFERENCES jobs (id)
+    ON DELETE CASCADE,
+
+    FOREIGN KEY (contractorId)
+    REFERENCES contractors (id)
+    ON DELETE CASCADE
+)
