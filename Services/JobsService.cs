@@ -23,7 +23,7 @@ namespace jobsapi.Services
         internal Job GetOne(int id)
         {
             var job = _jrepo.GetOne(id);
-            if (job.Id == null)
+            if (job == null)
             {
                 throw new SystemException("Invalid Id");
             }
