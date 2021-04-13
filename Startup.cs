@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using jobsapi.Repositorys;
+using jobsapi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,7 +49,10 @@ namespace jobsapi
       });
 
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
-
+            services.AddTransient<JobsService>();
+            services.AddTransient<JobsRepository>();
+            services.AddTransient<ProfilesRepository>();
+            services.AddTransient<ProfilesService>();
         }
         private IDbConnection CreateDbConnection()
         {
