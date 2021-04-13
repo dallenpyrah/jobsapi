@@ -51,8 +51,8 @@ namespace jobsapi.Repositorys
             string sql = @"INSERT INTO jobs
             (name, location, budget, creatorId)
             VALUES
-            (@Name, @Location, @Budget, @CreatorId)
-            SELECT LAST_INSERT_ID;";
+            (@Name, @Location, @Budget, @CreatorId);
+            SELECT LAST_INSERT_ID();";
             int id = _db.ExecuteScalar<int>(sql, newJob);
             newJob.Id = id;
             return newJob;
